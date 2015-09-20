@@ -6,5 +6,5 @@ Also at the end of your line of contact info put a double space, otherwise the f
 Johnathan Thompson -- johnathan.thompson@colorado.edu -- (719) 352-8158  
 Tess Geiger -- m.geiger@colorado.edu -- (512) 619-9797  
 Esteben Rodriguez -- esteben.rodriguez@colorado.edu -- (605) 481-8760  
-Kevin Mulcair -- kevin.mulcair@colorado.edu -- (970) 402-6640
+Kevin Mulcair -- kevin.mulcair@colorado.edu -- (970) 402-6640  
 Devon Campbell -- devon.campbell@colorado.edu -- (303) 999-8628
