@@ -8,3 +8,4 @@ Tess Geiger -- m.geiger@colorado.edu -- (512) 619-9797
 Esteben Rodriguez -- esteben.rodriguez@colorado.edu -- (605) 481-8760  
 Kevin Mulcair -- kevin.mulcair@colorado.edu -- (970) 402-6640  
 Devon Campbell -- devon.campbell@colorado.edu -- (303) 999-8628
+Nick Peper -- nicholas.peper@colorado.edu -- (303) 242-4197
