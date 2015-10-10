@@ -7,20 +7,20 @@ clear all; close all; clc;
     CtomAh = 1000*0.000277778; %coulomb to amp-hr conversion
 
 %% Flight Parameters
-    alt = 1630; %altitude ASL, m
+    alt = 0; %altitude ASL, m
     [T,~,P,rhoA] = atmosisa(alt); %standard atmosphere
-    tFlight = 20*60; %time of flight, sec
+    tFlight = 18*60; %time of flight, sec
     
 %% Vehicle Parameters
-    mF = 2.7; %vehicle frame mass, kg
-    K = 4; %number of props
+    mF = 5.9; %vehicle frame mass, kg
+    K = 6; %number of props
     
 %% Motor/Prop Parameters
-    Rprop = 5*2.54/100; %prop radius, m
-    etaP = 0.5; %propeller efficiency
-    etaM = 0.9; %motor efficiency
-    voltM = 10; %motor voltage, V
-    mM = 0.05; %motor mass, kg
+    Rprop = 7.5*2.54/100; %prop radius, m
+    etaP = 0.4; %propeller efficiency
+    etaM = 0.75; %motor efficiency
+    voltM = 22; %motor voltage, V
+    mM = 0.158; %motor mass, kg
         
 %% Initial Calculations
     mV = mF + K*mM; %total vehicle mass, kg
@@ -38,4 +38,5 @@ clear all; close all; clc;
 %% Calculate Charge Required
     Itotal = Ptotal/voltM; %total current, A
     Qtotal = Itotal*tFlight*CtomAh; %total charge, A-hr
+    Qreq = Qtotal/.8/.8;
     

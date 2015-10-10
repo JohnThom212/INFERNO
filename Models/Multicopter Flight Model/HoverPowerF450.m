@@ -4,26 +4,27 @@ clear all; close all; clc;
 
 %% Constants
     g = 9.81; %grav acceleration, m/s^2
-    cto
+    CtomAh = 1000*0.000277778; %coulomb to amp-hr conversion
 
 %% Flight Parameters
     alt = 1630; %altitude ASL, m
     [T,~,P,rhoA] = atmosisa(alt); %standard atmosphere
-    Time = 20*60; %time of flight, sec
+    tFlight = 15*60; %time of flight, sec
     
 %% Vehicle Parameters
-    mF = 2.7; %vehicle frame mass, kg
+    mF = 0.282; %vehicle frame mass, kg
+    mP = 1.654;
     K = 4; %number of props
     
 %% Motor/Prop Parameters
     Rprop = 5*2.54/100; %prop radius, m
-    etaP = 1; %propeller efficiency
-    etaM = 1; %motor efficiency
+    etaP = 0.4; %propeller efficiency
+    etaM = 0.75; %motor efficiency
     voltM = 10; %motor voltage, V
     mM = 0.05; %motor mass, kg
         
 %% Initial Calculations
-    mV = mF + K*mM; %total vehicle mass, kg
+    mV = mF + mP + K*mM; %total vehicle mass, kg
     Fnet = mV*g/K; %net force from each motor, N
     Aprop = pi*Rprop^2; %individual propeller area, m^2
     
@@ -36,5 +37,7 @@ clear all; close all; clc;
     Ptotal = K*Pmotor; %total engine power required, W
 
 %% Calculate Charge Required
-    Itotal = Ptotal/voltM;
+    Itotal = Ptotal/voltM; %total current, A
+    Qtotal = Itotal*tFlight*CtomAh; %total charge, A-hr
+    Qreq = Qtotal/0.8/0.8;
     
