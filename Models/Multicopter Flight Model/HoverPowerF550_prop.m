@@ -13,7 +13,8 @@ clear all; close all; clc;
     
 %% Vehicle Parameters
     mF = 0.478; %vehicle frame mass, kg
-    mP = 1.654; %payload mass, kg
+    mB = 1; %battery mass, kg
+    mP = 0.654; %payload mass, kg
     K = 6; %number of props
     
 %% Motor/Prop Parameters
@@ -24,7 +25,7 @@ clear all; close all; clc;
     mM = 0.05; %motor mass, kg
         
 %% Initial Calculations
-    mV = mF + mP + K*mM; %total vehicle mass, kg
+    mV = mF + mB + mP + K*mM; %total vehicle mass, kg
     Fnet = mV*g/K; %net force from each motor, N
     Aprop = pi*Rprop^2; %individual propeller area, m^2
     
@@ -38,5 +39,5 @@ clear all; close all; clc;
 %% Calculate Charge Required
     Itotal = Ptotal/voltM; %total current, A
     Qtotal = Itotal*tFlight*CtomAh; %total charge, A-hr
-    Qreq = Qtotal/0.8/0.8;
+    Qreq = Qtotal + Qtotal*.25; %required charge with 25% margin, A-hr
     
