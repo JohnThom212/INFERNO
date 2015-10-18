@@ -38,4 +38,4 @@ clear all; close all; clc;
 %% Calculate Charge Required
     Itotal = Ptotal/voltBatt; %total current, A
     Qtotal = Itotal*tFlight*CtomAh; %total charge, A-hr
-    Qreq = Qtotal + Qtotal*.2;
+    Qreq = Qtotal + Qtotal*.25;
