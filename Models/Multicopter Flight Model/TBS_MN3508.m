@@ -12,21 +12,26 @@ clear all; close all; clc;
     tFlight = 15*60; %time of flight, sec
     
 %% Vehicle Parameters
-    mF = 2.56; %vehicle frame mass, kg
-    mP = 0.584;
+    mF = 0.414; %vehicle frame mass, kg
+    mB = 1.245; %mass of battery, kg
     K = 4; %number of props
+    voltB = 22.2; %battery voltage, V
     
 %% Motor/Prop Parameters
-    Rprop = 5.5*2.54/100; %prop radius, m
-    etaP = 0.45; %propeller efficiency
-    etaM = 0.9; %motor efficiency
-    voltBatt = 14.8; %motor voltage, V
-    mM = 0; %motor mass, kg
+    Dprop = 12*2.54/100; %prop radius, m
+    etaP = 0.6; %propeller efficiency
+    etaM = 0.8; %motor efficiency
+    mM = 0.1; %motor mass, kg
+    
+%% Payload Parameters
+    mE = 0.08; %mass of electronics, kg
+    mI = 0.185; %mass of imagery system, kg
+    mP = 0.500; %mass of payload, kg
         
 %% Initial Calculations
-    mV = mF + mP + K*mM; %total vehicle mass, kg
-    Fnet = mV*g/K; %net force from each motor, N
-    Aprop = pi*Rprop^2; %individual propeller area, m^2
+    mV = mF + mB + mE + mI + mP + K*mM; %total vehicle mass, kg
+    Fnet = mV/K*1000; %net force from each motor, N
+    Aprop = pi*Dprop^2/4; %individual propeller area, m^2
     
 %% Calculate Air Exit Velocity and Mass Flow
     v1 = sqrt(Fnet/Aprop/2/rhoA); %induced velocity, m/s
@@ -36,6 +41,7 @@ clear all; close all; clc;
     Ptotal = K*Pmotor; %total engine power required, W
 
 %% Calculate Charge Required
-    Itotal = Ptotal/voltBatt; %total current, A
+    Itotal = Ptotal/voltB; %total current, A
     Qtotal = Itotal*tFlight*CtomAh; %total charge, A-hr
     Qreq = Qtotal + Qtotal*.25;
+    
