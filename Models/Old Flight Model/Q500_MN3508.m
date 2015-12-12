@@ -18,15 +18,15 @@ clear all; close all; clc;
     mStructure = mFrame + mGear;
     
 %% Power System
-    mBatt = 1.245; %mass of battery, kg (Lumenier 10,000mAh)
-    voltB = 22.2; %battery voltage, V (6s)
+    mBatt = 0.804; %mass of battery, kg (Lumenier 6600mAh)
+    voltB = 14.8; %battery voltage, V (6s)
     mPower = mBatt;
     
 %% Propulsion Parameters
-    Dprop = 12*2.54/100; %prop diameter, m (Graupner Eprop)
+    Dprop = 13*2.54/100; %prop diameter, m (Graupner Eprop)
     mProp = 0.015; %propeller mass , kg (Graupner Eprop)
     etaP = 0.6; %propeller efficiency
-    mMotor = 0.082; %motor mass, kg (MN4010).
+    mMotor = 0.082; %motor mass, kg (MN3508).
     etaM = 0.8; %motor efficiency
     mESC = 0.032; %ESC mass, kg (Lum ESC/BEC)
     mPropulsion = K*(mMotor + mProp + mESC);
@@ -34,8 +34,9 @@ clear all; close all; clc;
 %% Flight Electronics Parameters
     mFC = 0.038; %flight computer mass, kg (Pixhawk)
     mRadio = 0.016; %radio mass, kg (3DR Radio)
+    mRX = 0.0168; %RC receiver mass, kg (Taranis X8R)
     mGPS = 0.0168; %GPS/compass mass, kg (uBlox)
-    mElec = mFC + mRadio + mGPS;
+    mElec = mFC + mRadio + mRX + mGPS;
 
 %% Imagery Parameters
     mCamera = 0.074; %mass of imagery system, kg (GoPro Hero3 Black)
